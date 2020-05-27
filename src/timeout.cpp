@@ -1,12 +1,19 @@
 #include "timeout.h"
 
-void Timeout::prepare(uint32_t duration)
+Timeout::Timeout()
+{
+    force_timeout_ = true;
+    duration_ = 0;
+    last_reset_ = 0;
+}
+
+void Timeout::prepare(unsigned long duration)
 {
     duration_ = duration;
     force_timeout_ = true;
 }
 
-void Timeout::start(uint32_t duration)
+void Timeout::start(unsigned long duration)
 {
     duration_ = duration;
     reset();
@@ -14,7 +21,7 @@ void Timeout::start(uint32_t duration)
 
 bool Timeout::time_over()
 {
-    return (force_timeout_ || ((millis() - last_reset_) >= duration_));
+    return (force_timeout_ || ((periodic() - last_reset_) >= duration_));
 }
 
 void Timeout::reset()
@@ -25,7 +32,7 @@ void Timeout::reset()
     }
     else
     {
-        last_reset_ = millis();
+        last_reset_ = periodic();
         force_timeout_ = false;
     }
 }
