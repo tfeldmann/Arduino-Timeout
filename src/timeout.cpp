@@ -21,7 +21,7 @@ void Timeout::start(unsigned long duration)
 
 bool Timeout::time_over()
 {
-    return (force_timeout_ || ((periodic() - last_reset_) >= duration_));
+    return (force_timeout_ || ((millis() - last_reset_) >= duration_));
 }
 
 void Timeout::reset()
@@ -32,7 +32,7 @@ void Timeout::reset()
     }
     else
     {
-        last_reset_ = periodic();
+        last_reset_ = millis();
         force_timeout_ = false;
     }
 }
