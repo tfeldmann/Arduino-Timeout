@@ -2,13 +2,13 @@
 
 This is a library I use in almost all of my projects. It is fully unit-tested, production-ready and works on all platforms (AVR, SAM, ESP...) that support the arduino core.
 
-## Examples
+## Quickstart
 
 ### Example 1: A simple timeout
 
 The LED will turn on after 2 seconds.
 
-```arduino
+```cpp
 #include <timeout.h>
 
 const int PIN_LED = 13;
@@ -32,7 +32,7 @@ Connect a button to pin 12.
 Press the button to turn on the LED.
 Failing to press the button for more than one second switches off the LED.
 
-```arduino
+```cpp
 #include <timeout.h>
 
 const int PIN_LED = 13;
@@ -63,7 +63,7 @@ void loop()
 
 Toggles the LED every 200 milliseconds.
 
-```arduino
+```cpp
 #include <timeout.h>
 
 const int PIN_LED = 13;
@@ -89,22 +89,7 @@ void loop()
 
 ## Full API
 
-Include it like this:
-```arduino
-#include <timeout.h>
-
-Timeout t;
-
-void setup() {
-    // your setup here
-}
-
-void loop() {
-    // your loop here
-}
-```
-
-The `Timeout` instance `t` has the following methods:
+`Timeout` instances have the following methods:
 ```cpp
 // setup duration but don't start (time_over() will return true)
 // then call `reset()` somewhere else in your code to start the timer.
