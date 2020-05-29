@@ -1,4 +1,4 @@
-# Timeout
+# MinimalTimeout
 
 This is a library I use in almost all of my projects. It is fully unit-tested, production-ready and works on all platforms (AVR, SAM, ESP...) that support the arduino core.
 
@@ -99,16 +99,16 @@ void prepare(unsigned long duration);
 // for the next `duration` milliseconds)
 void start(unsigned long duration);   
 
-// return true if time ran out without reset
+// returns true if time ran out, false otherwise
 bool time_over();
 
-// reset the timer
+// winds up the timer to last known duration
 void reset();
 
-// wind the timer forward so time_over() is true
+// runs out the timer so time_over() is true
 void expire();
 
-// returns a single true when time runs out then resets itself
+// returns a single true when time runs out then automatically resets itself
 bool periodic();
 ```
 
