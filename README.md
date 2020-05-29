@@ -1,4 +1,4 @@
-# MinimalTimeout
+# Minimal Timeout for Arduino
 
 This is a library I use in almost all of my projects. It is fully unit-tested, production-ready and works on all platforms (AVR, SAM, ESP...) that support the arduino core.
 
