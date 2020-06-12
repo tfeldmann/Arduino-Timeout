@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map Minimal Timeout
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Timeout	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+prepare	KEYWORD2
+start	KEYWORD2
+time_over	KEYWORD2
+reset	KEYWORD2
+expire	KEYWORD2
+periodic	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
