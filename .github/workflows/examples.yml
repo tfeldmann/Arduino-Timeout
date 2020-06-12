@@ -1,4 +1,4 @@
-name: PlatformIO CI
+name: Compile examples
 
 on: [push]
 
@@ -18,8 +18,5 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install platformio
-      - name: Run unit tests
-        run: pio test
-        working-directory: test
       - name: Compile example ${{ matrix.example }}
         run: platformio ci --lib=src --board=${{ matrix.board }} examples/${{ matrix.example }}

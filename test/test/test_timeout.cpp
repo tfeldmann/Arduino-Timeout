@@ -86,7 +86,7 @@ void periodic_usecase()
 {
     Timeout t;
     current_time = 0;
-    char res[100] = "";
+    char res[101] = "";
     t.start(100);
     for (int i = 0; i < 400; i++)
     {
