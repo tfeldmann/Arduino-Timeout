@@ -1,6 +1,7 @@
 # Minimal Timeout for Arduino
 
-![PlatformIO CI](https://github.com/tfeldmann/Arduino-Timeout/workflows/PlatformIO%20CI/badge.svg)
+![Unit tests](https://github.com/tfeldmann/Arduino-Timeout/workflows/Unit%20tests/badge.svg)
+![Compile examples](https://github.com/tfeldmann/Arduino-Timeout/workflows/Compile%20examples/badge.svg)
 
 This is a library I use in almost all of my projects. It is fully unit-tested, production-ready and works on all platforms (AVR, SAM, ESP...) that support the arduino core.
 
