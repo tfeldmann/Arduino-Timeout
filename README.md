@@ -3,7 +3,9 @@
 ![Unit tests](https://github.com/tfeldmann/Arduino-Timeout/workflows/Unit%20tests/badge.svg)
 ![Compile examples](https://github.com/tfeldmann/Arduino-Timeout/workflows/Compile%20examples/badge.svg)
 
-This is a library I use in almost all of my projects. It is fully unit-tested, production-ready and works on all platforms (AVR, SAM, ESP...) that support the arduino core.
+The ideal library for heartbeats, timeouts and repeated timers. Easier to use than your kitchen timer.
+
+*This is a library I use in almost all of my projects. It is fully unit-tested, production-ready and works on all platforms (AVR, SAM, ESP...) that support the arduino core.*
 
 
 ## Quickstart
