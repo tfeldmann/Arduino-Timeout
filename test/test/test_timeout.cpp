@@ -86,17 +86,22 @@ void periodic_usecase()
 {
     Timeout t;
     current_time = 0;
-    char res[101] = "";
+    int out[10] = {0};
+    int index = 0;
+
     t.start(100);
     for (int i = 0; i < 400; i++)
     {
         current_time = i;
         if (t.periodic())
         {
-            snprintf(res, 100, "%s%d,", res, i);
+            out[index] = i;
+            index++;
         }
     }
-    TEST_ASSERT_EQUAL_STRING(res, "100,200,300,");
+
+    int expected[] = {100, 200, 300, 0, 0};
+    TEST_ASSERT_EQUAL_INT_ARRAY(expected, out, 5);
 }
 
 int main(int argc, char **argv)
