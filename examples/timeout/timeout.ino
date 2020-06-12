@@ -5,11 +5,11 @@ Timeout timeout;
 
 void setup()
 {
-    pinMode(LED_PIN, OUTPUT);
-    timeout.start(2000);
+  pinMode(LED_PIN, OUTPUT);
+  timeout.start(2000);
 }
 
 void loop()
 {
-    digitalWrite(LED_PIN, timeout.time_over());
+  digitalWrite(LED_PIN, timeout.time_over());
 }

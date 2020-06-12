@@ -7,18 +7,18 @@ Timeout heartbeat;
 
 void setup()
 {
-    pinMode(LED_PIN, OUTPUT);
-    pinMode(BUTTON_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);
 
-    heartbeat.prepare(1000);
+  heartbeat.prepare(1000);
 }
 
 void loop()
 {
-    if (digitalRead(BUTTON_PIN))
-    {
-        heartbeat.reset();
-    }
+  if (digitalRead(BUTTON_PIN))
+  {
+    heartbeat.reset();
+  }
 
-    digitalWrite(LED_PIN, heartbeat.time_over());
+  digitalWrite(LED_PIN, heartbeat.time_over());
 }
