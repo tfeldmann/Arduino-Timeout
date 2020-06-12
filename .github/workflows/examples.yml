@@ -4,19 +4,19 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        example: [examples/timeout, examples/heartbeat, examples/periodic]
+        example: ["examples/timeout", "examples/heartbeat", "examples/periodic"]
+        board: ["esp32dev", "uno", "due"]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python
-      uses: actions/setup-python@v1
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install platformio
-    - name: Run PlatformIO
-      run: platformio ci --lib=src --board=esp32dev --board=uno --board=due ${{ matrix.example }}
+      - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v1
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install platformio
+      - name: Run PlatformIO
+        run: platformio ci --lib=src --board=${{ matrix.board }} ${{ matrix.example }}
