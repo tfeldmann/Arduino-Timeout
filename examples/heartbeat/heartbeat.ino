@@ -1,24 +1,24 @@
 #include <timeout.h>
 
-const int PIN_LED = 13;
-const int PIN_BTN = 12;
+const int LED_PIN = 13;
+const int BUTTON_PIN = 12;
 
 Timeout heartbeat;
 
 void setup()
 {
-    pinMode(PIN_LED, OUTPUT);
-    pinMode(PIN_BTN, INPUT);
+    pinMode(LED_PIN, OUTPUT);
+    pinMode(BUTTON_PIN, INPUT);
 
     heartbeat.prepare(1000);
 }
 
 void loop()
 {
-    if (digitalRead(PIN_BTN))
+    if (digitalRead(BUTTON_PIN))
     {
         heartbeat.reset();
     }
 
-    digitalWrite(PIN_LED, heartbeat.time_over());
+    digitalWrite(LED_PIN, heartbeat.time_over());
 }

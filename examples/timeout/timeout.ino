@@ -1,15 +1,15 @@
 #include <timeout.h>
 
-const int PIN_LED = 13;
+const int LED_PIN = 13;
 Timeout timeout;
 
 void setup()
 {
-    pinMode(PIN_LED, OUTPUT);
+    pinMode(LED_PIN, OUTPUT);
     timeout.start(2000);
 }
 
 void loop()
 {
-    digitalWrite(PIN_LED, timeout.time_over());
+    digitalWrite(LED_PIN, timeout.time_over());
 }
