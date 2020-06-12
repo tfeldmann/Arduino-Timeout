@@ -1,8 +1,9 @@
 # Minimal Timeout for Arduino
 
+![PlatformIO CI](https://github.com/tfeldmann/Arduino-Timeout/workflows/PlatformIO%20CI/badge.svg)
+
 This is a library I use in almost all of my projects. It is fully unit-tested, production-ready and works on all platforms (AVR, SAM, ESP...) that support the arduino core.
 
-![PlatformIO CI](https://github.com/tfeldmann/Arduino-Timeout/workflows/PlatformIO%20CI/badge.svg)
 
 ## Quickstart
 
@@ -27,6 +28,7 @@ void loop()
     digitalWrite(LED_PIN, timeout.time_over());
 }
 ```
+
 
 ### Example 2: As a heartbeat detection
 
@@ -61,6 +63,7 @@ void loop()
 }
 ```
 
+
 ### Example 3: A periodic timer
 
 Toggles the LED every 200 milliseconds.
@@ -89,17 +92,18 @@ void loop()
 }
 ```
 
+
 ## Full API
 
 `Timeout` instances have the following methods:
 ```cpp
 // setup duration but don't start (time_over() will return true)
 // then call `reset()` somewhere else in your code to start the timer.
-void prepare(unsigned long duration); 
+void prepare(unsigned long duration);
 
 // setup duration and start the timer (time_over() is false
 // for the next `duration` milliseconds)
-void start(unsigned long duration);   
+void start(unsigned long duration);
 
 // returns true if time ran out, false otherwise
 bool time_over();

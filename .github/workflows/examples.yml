@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        example: ["examples/timeout", "examples/heartbeat", "examples/periodic"]
+        example: ["timeout", "heartbeat", "periodic"]
         board: ["esp32dev", "uno", "due"]
 
     steps:
@@ -18,5 +18,5 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install platformio
-      - name: Run PlatformIO
-        run: platformio ci --lib=src --board=${{ matrix.board }} ${{ matrix.example }}
+      - name: Compile example ${{ matrix.example }}
+        run: platformio ci --lib=src --board=${{ matrix.board }} examples/${{ matrix.example }}
