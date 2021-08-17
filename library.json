@@ -1,0 +1,51 @@
+{
+    "name": "Timeout",
+    "version": "1.4.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tfeldmann/Arduino-Timeout"
+    },
+    "description": "Minimal, production-ready timeout library for Arduino.",
+    "keywords": "Timing",
+    "authors": {
+        "name": "Thomas Feldmann",
+        "email": "mail@tfeldmann.de",
+        "url": "https://tfeldmann.de",
+        "maintainer": true
+    },
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": "*",
+    "examples": [
+        {
+            "name": "Heartbeat Signal",
+            "base": "examples/heartbeat",
+            "files": [
+                "heartbeat.ino"
+            ]
+        },
+        {
+            "name": "Periodic Timer",
+            "base": "examples/periodic",
+            "files": [
+                "periodic.ino"
+            ]
+        },
+        {
+            "name": "Kitchen Timer",
+            "base": "examples/timeout",
+            "files": [
+                "timeout.ino"
+            ]
+        }
+    ],
+    "export": {
+        "exclude": [
+            "keywords.txt",
+            "*.properties",
+            "platformio.ini",
+            ".github",
+            ".editorconfig"
+        ]
+    }
+}
