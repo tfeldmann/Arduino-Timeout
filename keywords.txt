@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map Minimal Timeout
+# Syntax Coloring Map Timeout
 #######################################
 
 #######################################
@@ -14,7 +14,6 @@ Timeout	KEYWORD1
 prepare	KEYWORD2
 start	KEYWORD2
 time_over	KEYWORD2
-reset	KEYWORD2
 expire	KEYWORD2
 periodic	KEYWORD2
 
