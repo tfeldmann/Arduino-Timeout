@@ -17,7 +17,7 @@ void loop()
 {
   if (digitalRead(BUTTON_PIN))
   {
-    heartbeat.reset();
+    heartbeat.start();
   }
 
   digitalWrite(LED_PIN, heartbeat.time_over());

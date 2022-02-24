@@ -18,7 +18,7 @@ void timer_usecase()
     TEST_ASSERT(t.time_over());
 
     When(Method(ArduinoFake(), millis)).AlwaysReturn(150);
-    t.reset();
+    t.start();
     TEST_ASSERT_FALSE(t.time_over());
     When(Method(ArduinoFake(), millis)).AlwaysReturn(200);
     TEST_ASSERT_FALSE(t.time_over());
@@ -26,7 +26,7 @@ void timer_usecase()
     TEST_ASSERT(t.time_over());
 
     When(Method(ArduinoFake(), millis)).AlwaysReturn(251);
-    t.reset();
+    t.start();
     TEST_ASSERT_FALSE(t.time_over());
 }
 
@@ -42,7 +42,7 @@ void heartbeat_usecase()
     TEST_ASSERT_TRUE(t.time_over());
     When(Method(ArduinoFake(), millis)).AlwaysReturn(150);
     TEST_ASSERT_TRUE(t.time_over());
-    t.reset();
+    t.start();
     When(Method(ArduinoFake(), millis)).AlwaysReturn(170);
     TEST_ASSERT_FALSE(t.time_over());
     When(Method(ArduinoFake(), millis)).AlwaysReturn(300);
