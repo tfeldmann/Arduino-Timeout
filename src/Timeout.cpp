@@ -73,6 +73,5 @@ uint32_t Timeout::time_left_ms(void)
     if (time_over()) {
         return 0;
     }
-    int32_t ms_left = time_ms_ - (millis() - reset_time_ms_);
-    return ms_left > 0 ? ms_left : 0;
+    return time_ms_ - (uint32_t)(millis() - reset_time_ms_);
 }
