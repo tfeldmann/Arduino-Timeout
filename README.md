@@ -97,18 +97,18 @@ void start(uint32_t time_ms);
 bool periodic(uint32_t time_ms);
 
 // pause and resume the timer
-void pause(void);
-void resume(void);
+void pause();
+void resume();
 
 // runs out the timer so `time_over()` returns true
-void expire(void);
+void expire();
 
 // returns whether the time ran out
-bool time_over(void);
+bool time_over();
 
 // returns whether the timer is paused
-bool is_paused(void);
+bool is_paused();
 
 // returns the milliseconds until the timer runs out
-uint32_t time_left_ms(void);
+uint32_t time_left_ms();
 ```
