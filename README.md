@@ -1,6 +1,7 @@
 # Timeout library for Arduino
 
 ![tests](https://github.com/tfeldmann/Arduino-Timeout/workflows/tests/badge.svg)
+[![PlatformIO Registry](https://badges.registry.platformio.org/packages/tfeldmann/library/Timeout.svg)](https://registry.platformio.org/libraries/tfeldmann/Timeout)
 
 The ideal library for heartbeats, timeouts and repeated timers. Easier to use than your kitchen timer.
 
