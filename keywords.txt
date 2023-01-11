@@ -11,11 +11,14 @@ Timeout	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-prepare	KEYWORD2
 start	KEYWORD2
-time_over	KEYWORD2
-expire	KEYWORD2
 periodic	KEYWORD2
+pause	KEYWORD2
+resume	KEYWORD2
+expire	KEYWORD2
+time_over	KEYWORD2
+is_paused	KEYWORD2
+time_left_ms	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
