@@ -1,6 +1,6 @@
 {
     "name": "Timeout",
-    "version": "1.5.0",
+    "version": "2.0.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/tfeldmann/Arduino-Timeout"
@@ -18,7 +18,7 @@
     "platforms": "*",
     "examples": [
         {
-            "name": "Heartbeat Signal",
+            "name": "Heartbeat",
             "base": "examples/heartbeat",
             "files": [
                 "heartbeat.ino"
@@ -32,7 +32,7 @@
             ]
         },
         {
-            "name": "Kitchen Timer",
+            "name": "Timer",
             "base": "examples/timeout",
             "files": [
                 "timeout.ino"
