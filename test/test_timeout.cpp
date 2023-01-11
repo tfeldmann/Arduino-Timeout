@@ -142,6 +142,10 @@ void pause_resume()
     TEST_ASSERT_EQUAL(t.time_left_ms(), 0);
     TEST_ASSERT_EQUAL(t.time_over(), true);
     TEST_ASSERT_EQUAL(t.is_paused(), false);
+    t.resume();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 0);
+    TEST_ASSERT_EQUAL(t.time_over(), true);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
 }
 
 void no_expiration_in_pause()
