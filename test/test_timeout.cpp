@@ -144,6 +144,77 @@ void pause_resume()
     TEST_ASSERT_EQUAL(t.is_paused(), false);
 }
 
+void no_expiration_in_pause()
+{
+    Timeout t;
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 0);
+    TEST_ASSERT_EQUAL(t.time_over(), true);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
+
+    set_millis(500);
+    t.start(500);
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 500);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
+
+    set_millis(600);
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 400);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
+
+    set_millis(700);
+    t.pause();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 300);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), true);
+
+    set_millis(800);
+    t.pause();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 300);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), true);
+
+    set_millis(900);
+    t.pause();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 300);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), true);
+
+    set_millis(1000);
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 300);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), true);
+
+    set_millis(1100);
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 300);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), true);
+
+    set_millis(1200);
+    t.resume();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 300);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
+
+    set_millis(1300);
+    t.resume();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 200);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
+
+    set_millis(1400);
+    t.resume();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 100);
+    TEST_ASSERT_EQUAL(t.time_over(), false);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
+
+    set_millis(1500);
+    t.resume();
+    TEST_ASSERT_EQUAL(t.time_left_ms(), 0);
+    TEST_ASSERT_EQUAL(t.time_over(), true);
+    TEST_ASSERT_EQUAL(t.is_paused(), false);
+}
+
 void periodic()
 {
     Timeout t;
@@ -199,6 +270,7 @@ int main(int argc, char** argv)
     RUN_TEST(heartbeat);
     RUN_TEST(expiration);
     RUN_TEST(pause_resume);
+    RUN_TEST(no_expiration_in_pause);
     RUN_TEST(periodic);
     RUN_TEST(rollover);
     return UNITY_END();

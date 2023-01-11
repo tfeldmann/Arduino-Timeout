@@ -49,6 +49,9 @@ void Timeout::expire(void)
 
 bool Timeout::time_over(void)
 {
+    if (paused_) {
+        return false;
+    }
     bool result = (time_over_forced_ || (uint32_t)(millis() - reset_time_ms_) >= time_ms_);
     if (result) {
         // make sure to stay expired and not roll over again
@@ -64,11 +67,11 @@ bool Timeout::is_paused(void)
 
 uint32_t Timeout::time_left_ms(void)
 {
-    if (time_over_forced_) {
-        return 0;
-    }
     if (paused_) {
         return time_ms_;
+    }
+    if (time_over()) {
+        return 0;
     }
     int32_t ms_left = time_ms_ - (millis() - reset_time_ms_);
     return ms_left > 0 ? ms_left : 0;
