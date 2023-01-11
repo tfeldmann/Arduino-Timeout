@@ -4,28 +4,32 @@
 class Timeout {
 public:
     Timeout();
-    Timeout(unsigned long duration);
 
-    // setup duration but don't start (time_over() stays true)
-    void prepare(unsigned long duration);
+    // set the timer to `time_ms` and start ticking
+    void start(uint32_t time_ms);
 
-    // start the timer with the prepared duration
-    void start();
+    // returns a single true when time runs out and then resets to `time_ms`.
+    bool periodic(uint32_t time_ms);
 
-    // setup duration and start the timer
-    void start(unsigned long duration);
+    // pause and resume the timer
+    void pause(void);
+    void resume(void);
 
-    // return true if time ran out
-    bool time_over();
+    // runs out the timer so `time_over()` returns true
+    void expire(void);
 
-    // runs out the timer so time_over() is true
-    void expire();
+    // returns whether the time ran out
+    bool time_over(void);
 
-    // returns a single true when time runs out and then resets itself
-    bool periodic();
+    // returns whether the timer is paused
+    bool is_paused(void);
+
+    // returns the milliseconds until the timer runs out
+    uint32_t time_left_ms(void);
 
 private:
-    bool force_timeout_;
-    unsigned long duration_;
-    unsigned long last_reset_;
+    uint32_t time_ms_;
+    uint32_t reset_time_ms_;
+    bool time_over_forced_;
+    bool paused_;
 };

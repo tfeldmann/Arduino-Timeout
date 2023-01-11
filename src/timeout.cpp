@@ -1,55 +1,75 @@
-#include "timeout.h"
+#include "Timeout.h"
 
 Timeout::Timeout()
-    : force_timeout_(true)
-    , duration_(0)
-    , last_reset_(0)
+    : time_ms_(0)
+    , reset_time_ms_(0)
+    , time_over_forced_(true)
+    , paused_(false)
 {
 }
 
-Timeout::Timeout(unsigned long duration)
-    : force_timeout_(true)
-    , duration_(duration)
-    , last_reset_(0)
+void Timeout::start(uint32_t time_ms)
 {
-}
-
-void Timeout::prepare(unsigned long duration)
-{
-    duration_ = duration;
-    force_timeout_ = true;
-}
-
-void Timeout::start()
-{
-    if (duration_ == 0) {
-        force_timeout_ = true;
+    paused_ = false;
+    time_ms_ = time_ms;
+    if (time_ms == 0) {
+        time_over_forced_ = true;
     } else {
-        last_reset_ = millis();
-        force_timeout_ = false;
+        reset_time_ms_ = millis();
+        time_over_forced_ = false;
     }
 }
 
-void Timeout::start(unsigned long duration)
-{
-    duration_ = duration;
-    start();
-}
-
-bool Timeout::time_over()
-{
-    return (force_timeout_ || ((millis() - last_reset_) >= duration_));
-}
-
-void Timeout::expire()
-{
-    force_timeout_ = true;
-}
-
-bool Timeout::periodic()
+bool Timeout::periodic(uint32_t time_ms)
 {
     bool result = time_over();
     if (result)
-        start();
+        start(time_ms);
     return result;
+}
+
+void Timeout::pause(void)
+{
+    time_ms_ = time_left_ms();
+    paused_ = true;
+}
+
+void Timeout::resume(void)
+{
+    if (paused_) {
+        start(time_ms_);
+    }
+}
+
+void Timeout::expire(void)
+{
+    time_over_forced_ = true;
+    paused_ = false;
+}
+
+bool Timeout::time_over(void)
+{
+    bool result = (time_over_forced_ || (uint32_t)(millis() - reset_time_ms_) >= time_ms_);
+    if (result) {
+        // make sure to stay expired and not roll over again
+        time_over_forced_ = true;
+    }
+    return result;
+}
+
+bool Timeout::is_paused(void)
+{
+    return paused_;
+}
+
+uint32_t Timeout::time_left_ms(void)
+{
+    if (time_over_forced_) {
+        return 0;
+    }
+    if (paused_) {
+        return time_ms_;
+    }
+    int32_t ms_left = time_ms_ - (millis() - reset_time_ms_);
+    return ms_left > 0 ? ms_left : 0;
 }
